@@ -1,4 +1,19 @@
-# Getting Started with Create React App
+
+
+# Lab
+
+TSS is app to import and export TSS employees
+
+Client made with ReactJs
+
+
+## Technologies
+- React Js
+- Jotai
+- Ant Design
+- Typescript
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -44,3 +59,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
