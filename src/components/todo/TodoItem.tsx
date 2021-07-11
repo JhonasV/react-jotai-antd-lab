@@ -1,20 +1,14 @@
 import { ITodo } from "../../models/todo";
 import { Button, Card } from "antd";
 import { DeleteFilled } from "@ant-design/icons";
-import {
-  useRemoveTodoCallback,
-  useRemoveTodoAtom,
-  useUpdateTodoAtom,
-  useUpdateTodoCallback,
-} from "../../jotai/store";
+import { useRemoveTodoAtom, useUpdateTodoAtom } from "../../jotai/store";
 interface IProps {
   todo: ITodo;
 }
 const TodoItem = ({ todo }: IProps) => {
-  const [, setRemoveTodoAtom] = useRemoveTodoAtom();
-  const [, removeTodoCallback] = useRemoveTodoCallback();
-  const [, setUpdateTodoAtom] = useUpdateTodoAtom();
-  const [, updateTodoCallback] = useUpdateTodoCallback();
+  const [, removeTodoAtom] = useRemoveTodoAtom();
+
+  const [, updateTodoAtom] = useUpdateTodoAtom();
 
   const cardStyle = {
     width: "325px",
@@ -36,17 +30,11 @@ const TodoItem = ({ todo }: IProps) => {
       style={cardStyle}
       title={`Todo #${todo.id}`}
       onClick={() => {
-        setUpdateTodoAtom(todo.id);
-        updateTodoCallback();
+        updateTodoAtom(todo.id);
       }}
       extra={
         <>
-          <Button
-            onClick={() => {
-              setRemoveTodoAtom(todo.id);
-              removeTodoCallback();
-            }}
-          >
+          <Button onClick={() => removeTodoAtom(todo.id)}>
             <DeleteFilled /> Remove
           </Button>{" "}
         </>

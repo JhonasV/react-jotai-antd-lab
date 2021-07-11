@@ -1,10 +1,9 @@
 import { Input, Form } from "antd";
-import { useAddTodoAtom, useAddTodoCallback } from "../../jotai/store";
+import { useAddTodoAtom } from "../../jotai/store";
 const { Search } = Input;
 
 const TodoForm = () => {
-  const [, setAddTodo] = useAddTodoAtom();
-  const [, addTodoCallback] = useAddTodoCallback();
+  const [, addTodoAtom] = useAddTodoAtom();
 
   const [form] = Form.useForm();
   return (
@@ -13,8 +12,7 @@ const TodoForm = () => {
       name="basic"
       initialValues={{ message: "" }}
       onFinish={(values) => {
-        setAddTodo(values.message);
-        addTodoCallback();
+        addTodoAtom(values.message);
         form.resetFields();
       }}
     >

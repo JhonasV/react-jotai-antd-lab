@@ -3,13 +3,10 @@ import { message } from 'antd'
 import { ITodo } from '../models/todo';
 
 const todosAtom = atom<ITodo[]>([]);
-const newTodoAtom = atom<string>("");
-const removeTodoAtom = atom<number>(0);
-const updateTodoAtom = atom<number>(0);
 
-const addNewTodoCallback = atom("", (get, set) => set(todosAtom, addTodo(get(todosAtom), get(newTodoAtom))))
-const removeTodoCallback = atom("", (get, set) =>  set(todosAtom, removeTodo(get(todosAtom), get(removeTodoAtom))))
-const updateTodoCallback = atom("", (get, set) => set(todosAtom, updateTodo(get(todosAtom), get(updateTodoAtom)) ))
+const addTodoAtom = atom("", (get, set, msg: string ) => set(todosAtom, addTodo(get(todosAtom), msg)))
+const removeTodoAtom = atom("", (get, set, id: number) =>  set(todosAtom, removeTodo(get(todosAtom), id)))
+const updateTodoAtom = atom("", (get, set, id: number)  => set(todosAtom, updateTodo(get(todosAtom), id) ))
 
 
 
@@ -44,9 +41,6 @@ const updateTodoCallback = atom("", (get, set) => set(todosAtom, updateTodo(get(
 
 // hooks
   export const useTodosAtom = () => useAtom(todosAtom);
-  export const useAddTodoAtom = () => useAtom(newTodoAtom);
-  export const useAddTodoCallback = () => useAtom(addNewTodoCallback);
-  export const useRemoveTodoAtom = () => useAtom(removeTodoAtom)
-  export const useRemoveTodoCallback = () => useAtom(removeTodoCallback);
+  export const useAddTodoAtom = () => useAtom(addTodoAtom);
+  export const useRemoveTodoAtom = () => useAtom(removeTodoAtom);
   export const useUpdateTodoAtom = () => useAtom(updateTodoAtom);
-  export const useUpdateTodoCallback = () => useAtom(updateTodoCallback);
