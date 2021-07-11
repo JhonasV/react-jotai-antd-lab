@@ -2,9 +2,7 @@
 
 # Lab
 
-TSS is app to import and export TSS employees
-
-Client made with ReactJs
+A lab creating a todo app using ReactJs with jotai as an state management system and antdesign
 
 
 ## Technologies
